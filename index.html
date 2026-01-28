@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .slider {
+            width: 70%;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .slide {
+            display: none;
+        }
+
+        .slide h2 {
+            color: #333;
+        }
+
+        .slide p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            background: #007BFF;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="slider">
+    <div class="slide">
+        <h2>Library Overview</h2>
+        <p>
+            Our library provides a quiet and comfortable environment for reading,
+            studying, and research. It serves students, teachers, and the community.
+        </p>
+    </div>
+
+    <div class="slide">
+        <h2>Books Collection</h2>
+        <p>
+            The library contains thousands of books including textbooks, novels,
+            journals, magazines, and reference materials across various subjects.
+        </p>
+    </div>
+
+    <div class="slide">
+        <h2>Digital Library</h2>
+        <p>
+            The digital library offers e-books, online journals, research papers,
+            and multimedia resources accessible anytime, anywhere.
+        </p>
+    </div>
+
+    <div class="buttons">
+        <button onclick="prevSlide()">Previous</button>
+        <button onclick="nextSlide()">Next</button>
+    </div>
+</div>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.getElementsByClassName("slide");
+
+    function showSlide(index) {
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slides[index].style.display = "block";
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(currentSlide);
+    }
+
+    // Show first slide on load
+    showSlide(currentSlide);
+</script>
+
+</body>
+</html>
